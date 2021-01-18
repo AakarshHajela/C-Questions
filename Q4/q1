@@ -1,0 +1,52 @@
+#include <iostream>
+
+using namespace std;
+
+void bsort(int a[],int n)
+{
+    for(int i=0;i<n-1;i++)
+        for(int j=0;j<n-i-1;j++)
+            if (a[j]>a[j+1])  
+            {
+                int t = a[j];
+                a[j] = a[j+1];
+                a[j+1] = t;
+            }
+}
+
+void closest2zero(int a[],int n)
+{
+    int l=0,r=n-1,mins=9999;
+    int sum,suml=l,sumr=r;
+    bsort(a,n);
+    while(l<r)
+    {
+        sum=a[l]+a[r];
+        if(abs(sum)<abs(mins))
+        {
+            mins=sum;
+            suml=l;
+            sumr=r;
+        }
+        if(sum<0)
+            l++;
+        else
+            r--;
+    }
+    cout<<"The elements whose sum is closest to zero are: "<<a[suml]<<" and "<<a[sumr]<<endl;
+}
+
+int main()
+{
+    int n;
+    cout<<"Size of array:";
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cout<<"element"<<i<<":";
+        cin>>a[i];
+    }
+    closest2zero(a,n);
+    return 0;
+}
