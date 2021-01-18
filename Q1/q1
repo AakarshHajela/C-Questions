@@ -1,0 +1,36 @@
+#include <iostream>
+
+using namespace std;
+
+void smallest(int a[],int n)
+{
+    int small = a[0];
+    for(int i=1;i<n;i++)
+        if(a[i]<small)
+        {
+            small = a[i];
+            a[i] = 9999;
+        }
+    int small2= a[0];
+    for(int i=1;i<n;i++)
+        if(a[i]<small2 && a[i]!=small)
+        {
+            small2 = a[i];
+        }
+    cout<<"The smallest element is "<<small<<" and the second smallest element is "<<small2<<endl;
+}
+
+int main()
+{
+    int n;
+    cout<<"Enter length of array:";
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cout<<"element "<<i+1<<":";
+        cin>>a[i];
+    }
+    smallest(a,n);
+    return 0;
+}
