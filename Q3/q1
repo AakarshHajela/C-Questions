@@ -1,0 +1,66 @@
+#include <iostream>
+
+using namespace std;
+
+void uni(int a[],int b[],int n,int m)
+{
+    int i=0,j=0;
+    while(i<n || j<m)
+    {
+        if(a[i]<b[j])
+            cout<<a[i++]<<",";
+        else if(a[i]>b[j])
+            cout<<b[j++]<<",";
+        else
+        {
+            cout<<a[i++]<<",";
+            j++;
+        }
+    }
+    cout<<"\b";
+}
+
+void intersection(int a[],int b[],int n,int m)
+{
+    int i=0,j=0;
+    while(i<m && j<n)
+    {
+        if(a[i]<b[j])
+            i++;
+        else if(a[i]>b[j])
+            j++ ;
+         else
+         {
+           cout<<a[i++]<<",";
+           j++;
+         }  
+    }
+    cout<<"\b";
+}
+
+int main()
+{
+    int n,m;
+    cout<<"Enter size of first array:";
+    cin>>n;
+    cout<<"Enter size of second array:";
+    cin>>m;
+    int a[n],b[m];
+    for(int i=0;i<n;i++)
+    {
+        cout<<"element "<<i<<":";
+        cin>>a[i];
+    }
+    for(int i=0;i<m;i++)
+    {
+        cout<<"element "<<i<<":";
+        cin>>b[i];
+    }
+    cout<<"Union: {";
+    uni(a,b,n,m);
+    cout<<"}"<<endl;
+    cout<<"Intersection: {";
+    intersection(a,b,n,m);
+    cout<<"}"<<endl;
+    return 0;
+}
