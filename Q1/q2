@@ -1,0 +1,65 @@
+#include <iostream>
+
+using namespace std;
+
+void arr_enter(int a[],int arr[],int end)
+{
+    for(int i=0;i<=end;i++)
+        arr[i] = a[i];
+}
+
+float median(int a[],int i)
+{
+    if(i==2)
+        return (a[0]+a[1])/2;
+    if(i%2==0)
+        return ((a[(i/2)-1]+a[(i/2)])/2);
+    else
+        return a[(i/2)];
+}
+
+void array_out(int a[],int n)
+{
+    for(int i=0;i<=n;i++)
+        cout<<a[i]<<",";
+    cout<<"\b";
+}
+
+void bsort(int a[],int n)
+{
+    for(int i=0;i<n-1;i++)
+        for(int j=0;j<n-i-1;j++)
+            if(a[j]>a[j+1])
+            {
+                int t=a[j];
+                a[j]=a[j+1];
+                a[j+1]=t;
+            }
+}
+
+void Medians(int a[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        int arr[i+1];
+        arr_enter(a,arr,i);
+        cout<<"After reading "<<i+1<<" elements of the data stream-";
+        
+        array_out(arr,i);
+        bsort(arr,i+1);
+        cout<<"-> median -"<<median(arr,i+1)<<endl;
+    }
+}
+
+int main()
+{
+    int a[100],i=0;
+    do
+    {
+        cout<<"Enter element:";
+        cin>>a[i++];
+        Medians(a,i);
+    }
+    while(a[i]>0);
+    return 0;
+}
