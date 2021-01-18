@@ -1,0 +1,29 @@
+#include <iostream>
+
+using namespace std;
+
+void dupli(int a[],int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        int el=a[i],count=0;
+        for(int j=i+1;j<n;j++)
+            if(el == a[j])
+                cout<<el<<",";
+    }   
+}
+
+int main()
+{
+    int n;
+    cout<<"Size of array:";
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    {
+        cout<<"Element "<<i<<":";
+        cin>>a[i];
+    }
+    dupli(a,n);
+    return 0;
+}
